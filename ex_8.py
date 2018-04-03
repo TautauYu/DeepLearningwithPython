@@ -1,7 +1,7 @@
 # Create first network with Keras
 from keras.models import Sequential
 from keras.layers import Dense
-import sklearn.cross_validation import StratifiedKFold
+from sklearn.cross_validation import StratifiedKFold
 import numpy
 # Fix random seed for reproducibility
 seed = 7
