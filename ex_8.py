@@ -12,7 +12,7 @@ dataset = numpy.loadtxt("./data/pima-indians-diabetes.csv",delimiter=",")
 X = dataset[:,0:8]
 Y = dataset[:,8]
 # Define 10-fold cross validation test harness
-kfold = StratifiedKFold(y = Y, n_fold = 10, shuffle = True, random_state = seed)
+kfold = StratifiedKFold(y = Y, n_folds = 10, shuffle = True, random_state = seed)
 cvscores = []
 for i, (train, test) in enumerate(kfold):
     # Create model
