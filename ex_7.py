@@ -11,6 +11,7 @@ dataset = numpy.loadtxt("./data/pima-indians-diabetes.csv",delimiter=",")
 X = dataset[:,0:8]
 Y = dataset[:,8]
 # Create model
+model = Sequential()
 model.add(Dense(12, input_dim = 8, init = 'uniform', activation = 'relu'))
 model.add(Dense(8, init = 'uniform', activation = 'relu'))
 model.add(Dense(1, init = 'uniform', activation = 'sigmoid'))
