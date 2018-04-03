@@ -16,7 +16,7 @@ model.add(Dense(12, input_dim = 8, init = 'uniform', activation = 'relu'))
 model.add(Dense(8, init = 'uniform', activation = 'relu'))
 model.add(Dense(1, init = 'uniform', activation = 'sigmoid'))
 # Compile model
-model.Compile(loss = 'binary_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
+model.compile(loss = 'binary_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
 # Fit the model
 model.fit(X, Y, nb_epoch = 150, batch_size = 10)
 # Evaluate the model
