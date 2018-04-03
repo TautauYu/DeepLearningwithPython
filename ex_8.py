@@ -2,6 +2,7 @@
 from keras.models import Sequential
 from keras.layers import Dense
 from sklearn.cross_validation import StratifiedKFold
+from keras.utils import plot_model
 import numpy
 # Fix random seed for reproducibility
 seed = 7
@@ -29,3 +30,6 @@ for i, (train, test) in enumerate(kfold):
     print("%s: %.2f%%" %(model.metrics_names[1], scores[1]*100))
     cvscores.append(scores[1]*100)
 print("%.2f%% (+/- %.2f%%)" %(numpy.mean(cvscores),numpy.std(cvscores)))
+
+# Output the image of model
+plot_model(model, to_file='model.png')
