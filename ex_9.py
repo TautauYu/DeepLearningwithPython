@@ -21,7 +21,7 @@ seed = 7
 numpy.random.seed(seed)
 
 # Load dataset
-dataset = numpy.loadtxt("./data/pima-indians-diabates.csv", delimiter = ',')
+dataset = numpy.loadtxt("./data/pima-indians-diabetes.csv", delimiter = ',')
 
 # Split into input (X) and ouput (Y) variables
 X = dataset[:,0:8]
