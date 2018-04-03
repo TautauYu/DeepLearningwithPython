@@ -41,5 +41,5 @@ grid_result = grid.fit(X,Y)
 
 # Summarize results
 print("Best: %f using %s" %(grid_result.best_score_, grid_result.best_params_))
-for params, mean_score, scores in grid_result.grid_scores_;
+for params, mean_score, scores in grid_result.grid_scores_:
     print("%f (%f) with: %r" %(scores.mean(), scores.std(), params))
