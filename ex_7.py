@@ -19,7 +19,7 @@ model.add(Dense(1, init = 'uniform', activation = 'sigmoid'))
 model.compile(loss = 'binary_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
 # Fit the model
 # model.fit(X, Y, nb_epoch = 150, batch_size = 10) # Initial model
-model.fit(X, Y, validation_split = 0.33, nb_epoch = 150, batch_size = 10, verbose=2) # 33% validation set
+model.fit(X, Y, validation_split = 0.33, nb_epoch = 150, batch_size = 10, verbose=2) # 33% validation set; verbose: logs output,0=None,1=progress bar,2=one line per epoch
 # Evaluate the model
 scores = model.evaluate(X,Y)
 print("%s: %.2f%%" %(model.metrics_names[1], scores[1]*100))
