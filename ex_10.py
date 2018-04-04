@@ -44,4 +44,4 @@ estimator = KerasClassifier(build_fn=baseline_model, nb_epoch = 200, batch_size 
 kfold = KFold(n = len(X), n_folds = 10, shuffle = True, random_state = seed)
 
 results = cross_val_score(estimator, X, dummy_y, cv=kfold)
-print("Accuracy: %.2%% (%.2f%%)" %(results.mean()*100, results.std()*100))
+print("Accuracy: %.2f%% (%.2f%%)" %(results.mean()*100, results.std()*100))
