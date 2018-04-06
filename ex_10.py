@@ -14,7 +14,7 @@ seed = 7
 numpy.random.seed(seed)
 
 # Load dataset
-dataframe = pandas.read_csv("./data/iris.csv", header = None)
+dataframe = pandas.read_csv("../data/iris.csv", header = None)
 dataset = dataframe.values
 X = dataset[:,0:4].astype(float)
 Y = dataset[:,4]
@@ -31,14 +31,14 @@ dummy_y = np_utils.to_categorical(encoded_Y)
 def baseline_model():
     # Create model
     model = Sequential()
-    model.add(Dense(4, input_dim = 4, init = 'normal', activation = 'relu'))
-    model.add(Dense(3, init = 'normal', activation = 'sigmoid'))
+    model.add(Dense(4, input_dim = 4, kernel_initializer = 'normal', activation = 'relu'))
+    model.add(Dense(3, kernel_initializer = 'normal', activation = 'sigmoid'))
     # Compile model
     model.compile(loss = 'categorical_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
     return model
 
 # Create wrapper for neural network model for using in scikit-learn
-estimator = KerasClassifier(build_fn=baseline_model, nb_epoch = 200, batch_size = 5, verbose = 0)
+estimator = KerasClassifier(build_fn = baseline_model, nb_epoch = 200, batch_size = 5, verbose = 2)
 
 # K fold
 kfold = KFold(n = len(X), n_folds = 10, shuffle = True, random_state = seed)
