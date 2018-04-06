@@ -38,4 +38,4 @@ def create_basedline():
 estimator = KerasClassifier(build_fn=create_basedline, nb_epoch=100, batch_size=5, verbose=2)
 kfold = StratifiedKFold(y=encoded_Y, n_folds=10, shuffle=True, random_state=seed)
 results = cross_val_score(estimator, X, encoded_Y, cv=kfold)
-print("Results: %.2f%% (%.2f%%)", %(results.mean()*100, results.std()*100))
+print("Results: %.2f%% (%.2f%%)" %(results.mean()*100, results.std()*100))
