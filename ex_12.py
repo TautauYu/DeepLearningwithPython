@@ -28,8 +28,17 @@ def baseline_model():
 seed = 7
 numpy.random.seed(seed)
 
-estimator = KerasRegressor(build_fn=baseline_model, epochs = 100, batch_size = 5, verbose =2)
-kfold = KFold(n=Len(X), n_folds=10, random_state=seed)
+# A Baseline Neural Network Model
+# estimator = KerasRegressor(build_fn=baseline_model, epochs = 100, batch_size = 5, verbose =2)
+# kfold = KFold(n=len(X), n_folds=10, random_state=seed)
 
-results = cross_val_score(estimator, X, Y, cv=kfold)
-print("Results: %.2f (%.2f) MSE" %(results.mean(), results.std()))
+# results = cross_val_score(estimator, X, Y, cv=kfold)
+# print("Results: %.2f (%.2f) MSE" %(results.mean(), results.std()))
+
+estimator = []
+estimator.append(('standardize', StandardScaler()))
+estimator.append(('mlp', KerasRegressor(build_fn=baseline_model, epochs = 50, batch_size = 5, verbose = 2)))
+pipeline = Pipeline(estimator)
+kfold = KFold(n=len(X), n_folds=10, random_state=seed)
+results = cross_val_score(pipeline, X, Y, cv=kfold)
+print("Standarized: %.2f (%.2f) MSE" %(results.mean(), results.std()))
