@@ -17,13 +17,13 @@ Y = dataset[:,8]
 
 # Create model
 model = Sequential()
-model.add(Dense(12, input_dim = 8, init = 'iuniform', activation = 'relu'))
-model.add(8, init = 'uniform', activation = 'relu')
-model.add(1, init = 'uniform', activation = 'sigmoid')
+model.add(Dense(12, input_dim = 8, init = 'uniform', activation = 'relu'))
+model.add(Dense(8, init = 'uniform', activation = 'relu'))
+model.add(Dense(1, init = 'uniform', activation = 'sigmoid'))
 
 """
 # Load wieights
-model.load_weights("weights.best.hdf5")
+model.load_weights("./checkpoint/weight.best.hdf5")
 print("Create model and loaded weightd from file")
 """
 
@@ -31,7 +31,7 @@ print("Create model and loaded weightd from file")
 model.compile(loss = 'binary_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
 
 # Checkpoint
-filepath = "weight.bset.hdf5"
+filepath = "./checkpoint/weight.best.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
 callbacks_list = [checkpoint]
 
