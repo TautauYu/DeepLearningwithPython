@@ -60,7 +60,7 @@ loaded_model = model_from_json(loaded_model_json)
 yaml_file = open("./SaveModel/model.yaml","r")
 loaded_model_yaml = yaml_file.read()
 yaml_file.close()
-loaded_model = loaded_from_yaml(loaded_model_yaml)
+loaded_model = model_from_yaml(loaded_model_yaml)
 
 # Load weights into new model
 loaded_model.load_weights("./SaveModel/model.h5")
