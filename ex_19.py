@@ -31,12 +31,12 @@ num_classes = y_test.shape[1]
 # Create model
 def CNN_model():
     model = Sequential()
-    model.add(Conv2D(filters = 30, kernel_size = 5, strides = 1, padding = 'valid', batch_input_shape = (64, 1, 28, 28), data_format = 'channels_first', activation = 'relu'))
+    model.add(Conv2D(filters = 30, kernel_size = 5, strides = 1, padding = 'valid', input_shape = (1, 28, 28), data_format = 'channels_first', activation = 'relu'))
     model.add(MaxPooling2D(pool_size = (2,2)))
     model.add(Conv2D(filters = 15, kernel_size = 3, strides = 1, padding = 'valid', data_format = 'channels_first', activation = 'relu'))
     model.add(MaxPooling2D(pool_size = (2,2)))
     model.add(Dropout(0.2))
-    model.add(Flatten()) # 展开成向量形式
+    model.add(Flatten())
     model.add(Dense(128, activation = 'relu'))
     model.add(Dense(50, activation = 'relu'))
     model.add(Dense(num_classes, activation = 'softmax'))
