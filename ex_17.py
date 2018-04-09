@@ -38,8 +38,8 @@ model.add(Dense(34, input_dim = 34, init = 'normal', activation = 'relu'))
 model.add(Dense(1, init = 'normal', activation = 'sigmoid'))
 
 # Compile model
-# Time-Based Learning Rate Schedule
 """
+# Time-Based Learning Rate Schedule
 epochs = 50
 learning_rate = 0.1
 decay_rate = learning_rate / epochs
