@@ -56,7 +56,7 @@ sgd = SGD(lr =0.0, momentum=0.9, decay=0.0, nesterov=False)
 
 model.compile(loss = 'binary_crossentropy', optimizer = sgd, metrics = ['accuracy'])
 
-lrate = LearningRateScheduler(step_decay)
+lrate = LearningRateScheduler(step_decay) # step_decay是以epoch为参数的函数，epoch从0开始，返回一个新的浮点型学习率
 callbacks_list = [lrate]
 
 # Fit model
