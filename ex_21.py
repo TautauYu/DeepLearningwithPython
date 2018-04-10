@@ -1,4 +1,4 @@
-# -*- coding: uft-8 -*-
+# -*- coding: utf-8 -*-
 import numpy
 from keras.datasets import cifar10
 from keras.models import Sequential
@@ -49,6 +49,37 @@ def SimpleCNNModel():
     model.compile(loss = 'categorical_crossentropy', optimizer = sgd, metrics = ['accuracy'])
     print(model.summary())
     return model
+
+# Create larger model
+def larger_model():
+    model = Sequential()
+    model.add(Conv2D(filters = 32, kernel_size = 3, strides = 1, input_shape = (32,32,3), data_format = 'channels_last', padding = 'same', activation = 'relu'))
+    model.add(Dropout(0.2))
+    model.add(Conv2D(filters = 32, kernel_size = 3, strides = 1, padding = 'same', activation = 'relu'))
+    model.add(MaxPooling2D(2))
+    model.add(Conv2D(filters = 64, kernel_size = 3, strides = 1, padding = 'same', activation = 'relu'))
+    model.add(Dropout(0.2))
+    model.add(Conv2D(filters = 64, kernel_size = 3, strides = 1, padding = 'same', activation = 'relu'))
+    model.add(MaxPooling2D(2))
+    model.add(Conv2D(filters = 128, kernel_size = 3, strides = 1, padding = 'same', activation = 'relu'))
+    model.add(Dropout(0.2))
+    model.add(Conv2D(filters = 128, kernel_size = 3, strides = 1, padding = 'same', activation = 'relu'))
+    model.add(MaxPooling2D(2))
+    model.add(Flatten())
+    model.add(Dropout(0.2))
+    model.add(Dense(1024, activation = 'relu', W_constraint = maxnorm(3)))
+    model.add(Dropout(0.2))
+    model.add(Dense(512, activation = 'relu', W_constraint = maxnorm(3)))
+    model.add(Dropout(0.2))
+    model.add(Dense(num_class, activation = 'softmax'))
+    # Compile model
+    epoch = 25
+    learning_rate = 0.01
+    decay = learning_rate / epoch
+    sgd = SGD(lr = learning_rate, momentum = 0.9, decay = decay, nesterov = 0)
+    model.compile(loss = 'categorical_crossentropy', optimizer = sgd, metrics = ['accuracy'])   
+    print(model.summary())
+    return model 
 
 cnn_model = SimpleCNNModel()
 cnn_model.fit(X_train, y_train, validation_data = (X_test, y_test), epochs = 25, batch_size = 32)
