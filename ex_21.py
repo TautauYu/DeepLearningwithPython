@@ -42,7 +42,7 @@ def SimpleCNNModel():
     model.add(Dense(num_class, activation = 'softmax'))
 
     # Compile model
-    epcoh = 25
+    epoch = 25
     learning_rate = 0.01
     decay = learning_rate / epoch
     sgd = SGD(lr = learning_rate, momentum = 0.9, decay = decay, nesterov = False)
