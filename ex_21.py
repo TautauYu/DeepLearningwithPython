@@ -84,5 +84,5 @@ def larger_model():
 cnn_model = SimpleCNNModel()
 cnn_model.fit(X_train, y_train, validation_data = (X_test, y_test), epochs = 25, batch_size = 32)
 
-scores = cnn_model.evaluate(X_test, y_test, Verbose = 2)
+scores = cnn_model.evaluate(X_test, y_test, verbose = 2)
 print("Accuracy: %.2f%%" %(scores[1]*100))
